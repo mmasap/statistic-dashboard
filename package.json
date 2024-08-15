@@ -9,7 +9,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "vue-tsc -b && vite build --base=/statistic-dashboard/",
     "preview": "vite preview",
     "format": "biome format --write ./",
     "lint": "biome lint ./",
