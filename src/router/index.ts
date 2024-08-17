@@ -2,7 +2,7 @@ import Charts from '@/pages/charts/Charts.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', redirect: '/charts' },
     { path: '/charts', component: Charts },
