@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import BarChartCard from '@/components/charts/BarChartCard.vue'
-import LineChartCard from '@/components/charts/LineChartCard.vue'
+import ChartCard from '@/components/charts/ChartCard.vue'
 import SelectPrefecture from '@/components/charts/SelectPrefecture.vue'
-import chartInfoList from '@/data/chartInfo'
+import { chartInfoList } from '@/data/chartInfo'
 import { type Region, regions } from '@/data/regionInfo'
 import { onBeforeMount, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -31,21 +30,10 @@ onBeforeMount(() => {
 
 <template>
   <select-prefecture :regionName="selectedRegion.name"></select-prefecture>
-  <v-container>
+  <v-container class="px-0">
     <v-row>
-      <v-col sm="6" md="4" v-for="chartInfo in chartInfoList">
-        <bar-chart-card
-          v-if="chartInfo.chartType === 'bar'"
-          :label="chartInfo.label"
-          :regionCode="selectedRegion.code"
-          :indicatorCode="chartInfo.indicatorCode"
-        ></bar-chart-card>
-        <line-chart-card
-          v-if="chartInfo.chartType === 'line'"
-          :label="chartInfo.label"
-          :regionCode="selectedRegion.code"
-          :indicatorCode="chartInfo.indicatorCode"
-        ></line-chart-card>
+      <v-col sm="6" lg="4" v-for="chartInfo in chartInfoList">
+        <chart-card :regionCode="selectedRegion.code" :chartInfo="chartInfo"></chart-card>
       </v-col>
     </v-row>
   </v-container>

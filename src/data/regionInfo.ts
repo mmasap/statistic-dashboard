@@ -1,4 +1,9 @@
-export type Region = (typeof regions)[number]
+export type Region = {
+  code: string
+  name: string
+  area: (typeof areas)[number]
+  kana: string
+}
 
 export const areas = [
   '全国',
@@ -12,7 +17,7 @@ export const areas = [
   '九州・沖縄',
 ] as const
 
-export const regions = [
+export const regions: Region[] = [
   {
     code: '00000',
     name: '全国',
@@ -301,9 +306,4 @@ export const regions = [
     area: '九州・沖縄',
     kana: 'おきなわけん',
   },
-] as const satisfies {
-  code: string
-  name: string
-  area: (typeof areas)[number]
-  kana: string
-}[]
+] as const

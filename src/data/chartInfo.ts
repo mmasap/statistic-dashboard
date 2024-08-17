@@ -1,21 +1,39 @@
-export default [
-  {
-    label: '林野面積',
-    chartType: 'line',
-    indicatorCode: '0101010200000010020',
-  },
+export type ChartInfo = {
+  label: string
+  unit: string
+  chartType: 'bar' | 'line'
+  indicatorCode: string
+}
+
+export const chartInfoList: ChartInfo[] = [
   {
     label: '総人口',
     chartType: 'bar',
+    unit: '人',
     indicatorCode: '0201010000000010000',
   },
   {
-    label: '食料自給率',
-    chartType: 'line',
-    indicatorCode: '0401090000000020010',
+    label: '出生数',
+    chartType: 'bar',
+    unit: '人',
+    indicatorCode: '0203010000000010000',
   },
-] as const satisfies {
-  label: string
-  chartType: 'bar' | 'line'
-  indicatorCode: string
-}[]
+  {
+    label: '死亡数',
+    chartType: 'bar',
+    unit: '人',
+    indicatorCode: '0203020000000010000',
+  },
+  {
+    label: '婚姻件数',
+    chartType: 'bar',
+    unit: '件',
+    indicatorCode: '0203070000000010010',
+  },
+  {
+    label: '離婚件数',
+    chartType: 'bar',
+    unit: '件',
+    indicatorCode: '0203080100000010010',
+  },
+] as const
