@@ -5,8 +5,8 @@ import { type Ref, onMounted, ref } from 'vue'
 import { Line as LineChart } from 'vue-chartjs'
 
 const props = defineProps<{
-  regionCode?: string
   label: string
+  regionCode: string
   indicatorCode: string
 }>()
 const chartData: Ref<ChartData<'line'> | undefined> = ref()

@@ -1,22 +1,9 @@
 <script lang="ts" setup>
 import { areas, regions } from '@/data/regionInfo'
-import { onBeforeMount, ref } from 'vue'
+import { ref } from 'vue'
 
-const props = defineProps<{
-  regionCode: string
-}>()
-
+const props = defineProps<{ regionName: string }>()
 const dialog = ref(false)
-const selectedRegion = ref<(typeof regions)[number]>(regions[0])
-
-onBeforeMount(() => {
-  const region = regions.find((region) => region.code === props.regionCode)
-  if (region) {
-    selectedRegion.value = region
-  } else {
-    throw new Error('Invalid region code')
-  }
-})
 </script>
 
 <template>
@@ -24,7 +11,7 @@ onBeforeMount(() => {
     <v-card-item>
       <v-row align="center" justify="center">
         <v-col cols="5" class="font-weight-bold">都道府県選択</v-col>
-        <v-col>{{ selectedRegion.name }}</v-col>
+        <v-col>{{ props.regionName }}</v-col>
         <v-col>
           <v-btn color="indigo" @click="dialog = true">変更</v-btn>
         </v-col>

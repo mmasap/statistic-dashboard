@@ -1,3 +1,5 @@
+export type Region = (typeof regions)[number]
+
 export const areas = [
   '全国',
   '北海道',

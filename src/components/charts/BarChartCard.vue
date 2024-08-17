@@ -6,7 +6,7 @@ import { Bar as BarChart } from 'vue-chartjs'
 
 const props = defineProps<{
   label: string
-  regionCode?: string
+  regionCode: string
   indicatorCode: string
 }>()
 const chartData: Ref<ChartData<'bar'> | undefined> = ref()
