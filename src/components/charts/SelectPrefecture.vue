@@ -13,7 +13,7 @@ const dialog = ref(false)
         <v-col cols="5" class="font-weight-bold">都道府県選択</v-col>
         <v-col>{{ props.regionName }}</v-col>
         <v-col>
-          <v-btn color="indigo" @click="dialog = true">変更</v-btn>
+          <v-btn color="primary" @click="dialog = true">変更</v-btn>
         </v-col>
       </v-row>
     </v-card-item>
@@ -40,7 +40,7 @@ const dialog = ref(false)
           </v-list-item>
         </v-list>
         <template v-slot:actions>
-          <v-btn @click="dialog = false" color="indigo" variant="flat">閉じる</v-btn>
+          <v-btn @click="dialog = false" color="primary" variant="flat">閉じる</v-btn>
         </template>
       </v-card>
     </v-dialog>
