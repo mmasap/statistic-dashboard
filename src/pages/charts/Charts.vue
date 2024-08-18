@@ -32,7 +32,7 @@ onBeforeMount(() => {
   <select-prefecture :regionName="selectedRegion.name"></select-prefecture>
   <v-container class="px-0">
     <v-row>
-      <v-col sm="6" lg="4" v-for="chartInfo in chartInfoList">
+      <v-col cols="12" sm="6" lg="4" v-for="chartInfo in chartInfoList">
         <chart-card :regionCode="selectedRegion.code" :chartInfo="chartInfo"></chart-card>
       </v-col>
     </v-row>
