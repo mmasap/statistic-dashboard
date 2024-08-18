@@ -1,5 +1,5 @@
 <template>
-  <v-footer :app="true">
+  <v-footer :app="true" :border="true">
     <p class="text-caption">
       このサービスは、<a
         class="text-decoration-none d-inline-flex align-center"

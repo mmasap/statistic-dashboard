@@ -7,8 +7,7 @@ export type Region = {
 
 export const areas = [
   '全国',
-  '北海道',
-  '東北',
+  '北海道・東北',
   '関東',
   '中部',
   '近畿',
@@ -27,43 +26,43 @@ export const regions: Region[] = [
   {
     code: '01000',
     name: '北海道',
-    area: '北海道',
+    area: '北海道・東北',
     kana: 'ほっかいどう',
   },
   {
     code: '02000',
     name: '青森県',
-    area: '東北',
+    area: '北海道・東北',
     kana: 'あおもりけん',
   },
   {
     code: '03000',
     name: '岩手県',
-    area: '東北',
+    area: '北海道・東北',
     kana: 'いわてけん',
   },
   {
     code: '04000',
     name: '宮城県',
-    area: '東北',
+    area: '北海道・東北',
     kana: 'みやぎけん',
   },
   {
     code: '05000',
     name: '秋田県',
-    area: '東北',
+    area: '北海道・東北',
     kana: 'あきたけん',
   },
   {
     code: '06000',
     name: '山形県',
-    area: '東北',
+    area: '北海道・東北',
     kana: 'やまがたけん',
   },
   {
     code: '07000',
     name: '福島県',
-    area: '東北',
+    area: '北海道・東北',
     kana: 'ふくしまけん',
   },
   {
