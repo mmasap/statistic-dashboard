@@ -4,7 +4,6 @@ import { ref } from 'vue'
 
 const props = defineProps<{ regionName: string }>()
 const dialog = ref(false)
-const test = 'aaaa'
 </script>
 
 <template>
