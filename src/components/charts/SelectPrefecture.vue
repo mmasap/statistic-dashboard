@@ -4,10 +4,7 @@ import { ref } from 'vue'
 
 const props = defineProps<{ regionName: string }>()
 const dialog = ref(false)
-const testEach = (arr: string[]) => {
-  arr.forEach((arr) => console.log(arr))
-}
-console.log(testEach)
+const test = 'aaaa'
 </script>
 
 <template>
