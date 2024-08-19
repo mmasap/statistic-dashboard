@@ -1,32 +1,12 @@
-import { createApp } from 'vue'
+import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
-import {
-  BarElement,
-  CategoryScale,
-  Chart as ChartJS,
-  Legend,
-  LineElement,
-  LinearScale,
-  PointElement,
-  Title,
-  Tooltip,
-} from 'chart.js'
+
+import { createApp } from 'vue'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import App from './App.vue'
 import router from './router'
-
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  PointElement,
-  LineElement,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-)
 
 const vuetify = createVuetify({
   components,

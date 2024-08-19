@@ -3,7 +3,8 @@ import type { ChartInfo } from '@/data/chartInfo'
 import useApi from '@/hooks/useApi'
 import type { ChartData, ChartOptions } from 'chart.js'
 import { onMounted, onUnmounted, ref } from 'vue'
-import { Bar as BarChart, Line as LineChart } from 'vue-chartjs'
+import BarChart from './BarChart.vue'
+import LineChart from './LineChart.vue'
 
 const props = defineProps<{
   regionCode: string
