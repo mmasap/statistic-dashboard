@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { ChartInfo } from '@/data/chartInfo'
-import { getData } from '@/utils/api'
+import useApi from '@/hooks/useApi'
 import type { ChartData, ChartOptions } from 'chart.js'
 import { onMounted, onUnmounted, ref } from 'vue'
 import { Bar as BarChart, Line as LineChart } from 'vue-chartjs'
@@ -11,8 +11,8 @@ const props = defineProps<{
 }>()
 const barChartData = ref<ChartData<'bar'>>()
 const lineChartData = ref<ChartData<'line'>>()
-const chartWidth = ref(0)
-const loading = ref(false)
+const chartHeight = ref(0)
+const { getChartData, loading } = useApi()
 const cardRef = ref<HTMLDivElement>()
 const title = `${props.chartInfo.label}(${props.chartInfo.unit})`
 const options = {
@@ -25,39 +25,36 @@ const options = {
 } satisfies ChartOptions
 
 onMounted(async () => {
-  updateChartWidth()
-  window.addEventListener('resize', updateChartWidth)
-  getChartData()
+  updateChartHeight()
+  window.addEventListener('resize', updateChartHeight)
+  updateChartData()
 })
 
 onUnmounted(() => {
-  window.removeEventListener('resize', updateChartWidth)
+  window.removeEventListener('resize', updateChartHeight)
 })
 
-function updateChartWidth() {
-  chartWidth.value = cardRef.value?.clientWidth ?? 0
-}
-
-async function getChartData() {
-  loading.value = true
-  const chartData = await getData({
+async function updateChartData() {
+  const chartType = props.chartInfo.chartType
+  const chartData = chartType === 'bar' ? barChartData : lineChartData
+  chartData.value = await getChartData({
     indicatorCode: props.chartInfo.indicatorCode,
     regionCode: props.regionCode,
+    maxDataCount: 20,
   })
-  if (props.chartInfo.chartType === 'bar') {
-    barChartData.value = chartData
-  } else if (props.chartInfo.chartType === 'line') {
-    lineChartData.value = chartData
-  }
-  loading.value = false
+}
+
+function updateChartHeight() {
+  const chartWidth = cardRef.value?.clientWidth ?? 0
+  chartHeight.value = chartWidth / 2
 }
 </script>
 
 <template>
-  <v-card :key="chartWidth">
+  <v-card>
     <v-card-title>{{ title }}</v-card-title>
     <v-card-text>
-      <div ref="cardRef" :style="{ height: `${chartWidth * 0.5}px` }">
+      <div ref="cardRef" :style="{ height: `${chartHeight}px` }">
         <div class="d-flex justify-center align-center h-100">
           <v-progress-circular v-if="loading" indeterminate></v-progress-circular>
           <bar-chart v-else-if="barChartData" :data="barChartData" :options="options"></bar-chart>
@@ -66,7 +63,7 @@ async function getChartData() {
             :data="lineChartData"
             :options="options"
           ></line-chart>
-          <div v-else>No data</div>
+          <p v-else>No data</p>
         </div>
       </div>
     </v-card-text>
