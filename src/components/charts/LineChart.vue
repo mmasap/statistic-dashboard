@@ -18,7 +18,15 @@ const props = defineProps<{
   data: ChartData<'line'>
 }>()
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+)
 </script>
 
 <template>
